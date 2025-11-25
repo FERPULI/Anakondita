@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="C:\xampp\htdocs\Anakondita\phpunit.xml" tests="6" assertions="12" errors="0" failures="0" skipped="0" time="5.118167">
+    <testsuite name="Test Suite" tests="6" assertions="12" errors="0" failures="0" skipped="0" time="5.118167">
+      <testsuite name="Tests\Feature\ExampleTest" file="tests\Feature\ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="1.645634">
+        <testcase name="example" file="tests\Feature\ExampleTest.php::example" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" assertions="1" time="1.645634"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\CalculadoraTest" file="tests\Unit\CalculadoraTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="2.438035">
+        <testcase name="suma dos numeros correctamente" file="tests\Unit\CalculadoraTest.php::suma dos numeros correctamente" class="Tests\Unit\CalculadoraTest" classname="Tests.Unit.CalculadoraTest" assertions="1" time="2.125185"/>
+        <testcase name="verifica que un texto no este vacio" file="tests\Unit\CalculadoraTest.php::verifica que un texto no este vacio" class="Tests\Unit\CalculadoraTest" classname="Tests.Unit.CalculadoraTest" assertions="2" time="0.312849"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\ExampleTest" file="tests\Unit\ExampleTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.003483">
+        <testcase name="example" file="tests\Unit\ExampleTest.php::example" class="Tests\Unit\ExampleTest" classname="Tests.Unit.ExampleTest" assertions="1" time="0.003483"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\UsuarioTest" file="tests\Unit\UsuarioTest.php" tests="2" assertions="7" errors="0" failures="0" skipped="0" time="1.031015">
+        <testcase name="Usuario getAll prepara la consulta SQL correcta" file="tests\Unit\UsuarioTest.php::Usuario getAll prepara la consulta SQL correcta" class="Tests\Unit\UsuarioTest" classname="Tests.Unit.UsuarioTest" assertions="3" time="1.029841"/>
+        <testcase name="Usuario create inserta un nuevo registro con los datos correctos" file="tests\Unit\UsuarioTest.php::Usuario create inserta un nuevo registro con los datos correctos" class="Tests\Unit\UsuarioTest" classname="Tests.Unit.UsuarioTest" assertions="4" time="0.001175"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

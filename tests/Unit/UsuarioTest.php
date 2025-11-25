@@ -71,3 +71,66 @@ test('Usuario create inserta un nuevo registro con los datos correctos', functio
 afterEach(function () {
     m::close();
 });
+
+// -------------------------------------------------------------------
+// Test 3: Verificar que update() actualice los datos correctamente
+// -------------------------------------------------------------------
+test('Usuario update actualiza un registro existente', function () {
+    // 1. Arrange
+    $stmtSimulado = m::mock(PDOStatement::class);
+    // update usa 5 parámetros (dni, nombres, apellidos, correo, id)
+    $stmtSimulado->shouldReceive('bindParam')->times(5); 
+    $stmtSimulado->shouldReceive('execute')->once()->andReturn(true);
+
+    $dbSimulada = m::mock(PDO::class);
+    
+    // SQL exacto de tu modelo
+    $sqlEsperado = "UPDATE usuarios SET dni = :dni, nombres = :nombres, apellidos = :apellidos, correo = :correo WHERE id = :id";
+    
+    $dbSimulada->shouldReceive('prepare')
+        ->with($sqlEsperado)
+        ->once()
+        ->andReturn($stmtSimulado);
+
+    // 2. Act
+    $usuario = new \Usuario($dbSimulada);
+    $usuario->id = 1; // Importante para el WHERE
+    $usuario->dni = '87654321';
+    $usuario->nombres = 'Juan';
+    $usuario->apellidos = 'Editado';
+    $usuario->correo = 'juan_edit@test.com';
+
+    $resultado = $usuario->update();
+
+    // 3. Assert
+    expect($resultado)->toBeTrue();
+});
+
+// -------------------------------------------------------------------
+// Test 4: Verificar que delete() elimine el registro
+// -------------------------------------------------------------------
+test('Usuario delete elimina un registro por ID', function () {
+    // 1. Arrange
+    $stmtSimulado = m::mock(PDOStatement::class);
+    // delete usa 1 parámetro (:id)
+    $stmtSimulado->shouldReceive('bindParam')->times(1);
+    $stmtSimulado->shouldReceive('execute')->once()->andReturn(true);
+
+    $dbSimulada = m::mock(PDO::class);
+    
+    $sqlEsperado = "DELETE FROM usuarios WHERE id = :id";
+    
+    $dbSimulada->shouldReceive('prepare')
+        ->with($sqlEsperado)
+        ->once()
+        ->andReturn($stmtSimulado);
+
+    // 2. Act
+    $usuario = new \Usuario($dbSimulada);
+    $usuario->id = 5; // El ID que queremos borrar
+
+    $resultado = $usuario->delete();
+
+    // 3. Assert
+    expect($resultado)->toBeTrue();
+});
